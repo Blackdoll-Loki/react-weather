@@ -48,7 +48,7 @@ export default function SearchEngine() {
     return (
       <form onSubmit={getWeather} className="App">
         <input type="text" placeholder="Enter a city..." onChange={getCity} />
-        <input type="button" value="Submit" />={" "}
+        <input type="button" value="Submit" />
       </form>
     );
   }

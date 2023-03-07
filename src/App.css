@@ -12,6 +12,11 @@ li {
 a {
   text-decoration: none;
 }
+form {
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

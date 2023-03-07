@@ -11,9 +11,10 @@ function App() {
           <a
             href="https://github.com/Blackdoll-Loki/react-weather"
             target="_blank"
+            rel="noreferrer"
           >
             Open source-code
-          </a>
+          </a>{" "}
           by Daria
         </p>
       </footer>
