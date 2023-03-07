@@ -12,13 +12,12 @@ export default function List(props) {
           return <li key={index}> Humidity: {item}% </li>;
         } else if (index === 3) {
           return <li key={index}> Wind: {item}km/h </li>;
-        } else if (index === 4) {
-          return (
-            <li key={index}>
-              <img src={item} alt="icon" />
-            </li>
-          );
         }
+        return (
+          <li key={index}>
+            <img src={item} alt="icon" />
+          </li>
+        );
       })}
     </ul>
   );
