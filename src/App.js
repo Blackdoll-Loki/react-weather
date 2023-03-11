@@ -3,9 +3,10 @@ import SearchEngine from "./SearchEngine";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Weather App</h1>
-      <SearchEngine />
+    <div>
+      <div className="App">
+        <SearchEngine />
+      </div>
       <footer>
         <p>
           <a

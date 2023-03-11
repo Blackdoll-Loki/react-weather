@@ -1,0 +1,58 @@
+.Current {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  color: #878787;
+}
+.right-col {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.left-col {
+  text-align: left;
+}
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+}
+h1 {
+  font-size: 24px;
+  line-height: 28.8px;
+}
+h2 {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 20px;
+}
+ul {
+  padding: 0;
+}
+li {
+  font-size: 16px;
+  line-height: 19.2px;
+  list-style: none;
+}
+.icon-text {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  grid-template-rows: 64px;
+}
+.central-icon {
+  align-self: center;
+}
+.temperature {
+  font-size: 64px;
+  font-weight: 400;
+  color: rgb(33, 33, 33);
+}
+.unit {
+  vertical-align: top;
+}

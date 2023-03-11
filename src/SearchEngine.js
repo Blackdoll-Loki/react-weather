@@ -1,26 +1,29 @@
 import React, { useState } from "react";
-/*import axios from "axios";*/
-import List from "./List";
+import Current from "./Current";
+import "./SearchEngine.css";
 
 export default function SearchEngine() {
-  let [temperature, setTemperature] = useState(null);
+  let [weather, setWeather] = useState({ ready: false });
   let [city, setCity] = useState("");
   function getCity(event) {
     setCity(event.target.value);
   }
   function storeWeather(response) {
-    let arr = makeWeatherArr(response);
-    setTemperature(arr);
+    let arr = makeWeatherObj(response);
+    setWeather(arr);
   }
-  function makeWeatherArr(obj) {
-    let arr = [].concat(
-      Math.round(obj.temperature.current),
-      obj.condition.description,
-      obj.temperature.humidity,
-      obj.wind.speed,
-      obj.condition.icon_url
-    );
-    return arr;
+  function makeWeatherObj(obj) {
+    let weather = {
+      ready: true,
+      city: obj.city,
+      description: obj.condition.description,
+      iconUrl: obj.condition.icon_url,
+      temperature: obj.temperature.current,
+      humidity: obj.temperature.humidity,
+      timestamp: obj.time,
+      wind: obj.wind.speed,
+    };
+    return weather;
   }
   async function getWeather(event) {
     event.preventDefault();
@@ -34,22 +37,36 @@ export default function SearchEngine() {
         storeWeather(obj);
       });
   }
-  if (temperature) {
+  if (weather.ready) {
     return (
-      <div className="App">
+      <div>
         <form onSubmit={getWeather}>
-          <input type="text" placeholder="Enter a city..." onChange={getCity} />
-          <input type="button" value="Submit" />
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Enter a city..."
+            autoFocus="on"
+            onChange={getCity}
+          />
+          <input type="button" className="search-btn" value="Submit" />
         </form>
-        <List temperature={temperature} />
+        <Current weather={weather} />
       </div>
     );
   } else {
     return (
-      <form onSubmit={getWeather} className="App">
-        <input type="text" placeholder="Enter a city..." onChange={getCity} />
-        <input type="button" value="Submit" />
-      </form>
+      <div>
+        <form onSubmit={getWeather}>
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Enter a city..."
+            autoFocus="on"
+            onChange={getCity}
+          />
+          <input type="button" className="search-btn" value="Submit" />
+        </form>
+      </div>
     );
   }
 }
