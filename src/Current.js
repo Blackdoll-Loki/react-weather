@@ -1,5 +1,6 @@
 import React from "react";
 import FormatDate from "./FormatDate";
+import Temperature from "./Temperature";
 import "./Current.css";
 
 /*export default function List(props) {
@@ -37,17 +38,7 @@ export default function Current(props) {
           </li>
           <li>{props.weather.description}</li>
         </ul>
-        <div className="icon-text">
-          <img
-            src={props.weather.iconUrl}
-            alt={props.weather.description}
-            className="central-icon"
-          />
-          <span className="temperature">
-            {Math.round(props.weather.temperature)}
-          </span>
-          °<span className="unit">C</span>|<span>F</span>
-        </div>
+        <Temperature temperature={props.weather} />
       </div>
       <div className="right-col">
         <h2>Weather</h2>
