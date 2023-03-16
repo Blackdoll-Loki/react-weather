@@ -1,21 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Temperature(props) {
-  let [temp, setTemp] = useState(Math.round(props.temperature.temperature));
+  let [temp, setTemp] = useState(Math.round(props.weather.temperature));
+  console.log(props);
   function convertToFahrenheit(event) {
     event.preventDefault();
     let fahrenheit = Math.round((temp * 9) / 5 + 32);
     setTemp(fahrenheit);
   }
   function convertToCelsius() {
-    setTemp(Math.round(props.temperature.temperature));
+    setTemp(Math.round(props.weather.temperature));
   }
-  if (temp === Math.round(props.temperature.temperature)) {
+  useEffect(() => {
+    setTemp(Math.round(props.weather.temperature));
+  }, [props.weather.temperature]);
+  if (temp === Math.round(props.weather.temperature)) {
     return (
       <div className="icon-text">
         <img
-          src={props.temperature.iconUrl}
-          alt={props.temperature.description}
+          src={props.weather.iconUrl}
+          alt={props.weather.description}
           className="central-icon"
         />
         <span className="temperature">{temp}</span>
@@ -29,8 +33,8 @@ export default function Temperature(props) {
     return (
       <div className="icon-text">
         <img
-          src={props.temperature.iconUrl}
-          alt={props.temperature.description}
+          src={props.weather.iconUrl}
+          alt={props.weather.description}
           className="central-icon"
         />
         <span className="temperature">{temp}</span>

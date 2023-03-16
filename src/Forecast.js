@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Forecast.css";
 
 export default function Forecast(props) {
@@ -13,7 +13,7 @@ export default function Forecast(props) {
     return (
       <div className="ForecastCards">
         {props.forecast.map((el, idx) => {
-          if (idx < 6)
+          if (idx > 0 && idx < 7) {
             return (
               <div className="card" key={idx}>
                 <h3>{day(el)}</h3>
@@ -27,6 +27,7 @@ export default function Forecast(props) {
                 </p>
               </div>
             );
+          }
         })}
       </div>
     );

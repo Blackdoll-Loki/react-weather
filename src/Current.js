@@ -38,7 +38,7 @@ export default function Current(props) {
           </li>
           <li>{props.weather.description}</li>
         </ul>
-        <Temperature temperature={props.weather} />
+        <Temperature weather={props.weather} />
       </div>
       <div className="right-col">
         <h2>Weather</h2>
