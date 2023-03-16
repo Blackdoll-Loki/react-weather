@@ -1,10 +1,21 @@
 import React, { useState } from "react";
 import Current from "./Current";
+import Forecast from "./Forecast";
 import "./SearchEngine.css";
 
 export default function SearchEngine() {
   let [weather, setWeather] = useState({ ready: false });
   let [city, setCity] = useState("");
+  let [forecast, setForecast] = useState(null);
+  function getForecast() {
+    let key = `be31ee9ff95t7734bo02a1e16b490b16`;
+    let url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${key}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((obj) => {
+        setForecast(obj.daily);
+      });
+  }
   function getCity(event) {
     setCity(event.target.value);
   }
@@ -33,8 +44,8 @@ export default function SearchEngine() {
     fetch(url)
       .then((response) => response.json())
       .then((obj) => {
-        console.log(obj);
         storeWeather(obj);
+        getForecast();
       });
   }
   if (weather.ready) {
@@ -51,6 +62,7 @@ export default function SearchEngine() {
           <input type="button" className="search-btn" value="Submit" />
         </form>
         <Current weather={weather} />
+        <Forecast forecast={forecast} />
       </div>
     );
   } else {
